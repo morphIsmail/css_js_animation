@@ -1,0 +1,74 @@
+* {
+  font-family: 'Calibri';
+}
+/* Анимация */
+.animated {
+  transition-property: background-color;
+  transition-duration: 3s;
+  /*
+  transition позволяет задать переход одновременно для нескольких свойств в последовательности: property duration timing-function delay.
+
+  transition: font-size 3s, color 2s;
+
+  В transition-property записывается список свойств, изменения которых необходимо анимировать, например: left , margin-left , height , color. Анимировать можно не все свойства, но многие из них. Значение свойства all означает «анимируй все свойства».
+
+  В transition-duration можно определить, сколько времени займёт анимация. Время должно быть задано в формате времени CSS: в секундах s или миллисекундах ms.
+
+  В transition-delay можно определить задержку перед началом анимации. Например, если transition-delay: 1s , тогда анимация начнётся через 1 секунду после изменения свойства. Отрицательные значения также допустимы. В таком случае анимация начнётся с середины. Например, если transition-duration равно 2s, а transition-delay – -1s , тогда анимация займёт одну секунду и начнётся с середины.
+
+  transition-timing-function – временная функция перехода описывает, как процесс анимации будет распределён во времени. Будет ли она начата медленно и затем ускорится или наоборот. На первый взгляд это очень сложное свойство, но оно становится понятным, если уделить ему немного времени. Это свойство может принимать два вида значений: кривую Безье или количество шагов. Давайте начнём с кривой Безье, как с наиболее часто используемой.
+
+  Есть несколько встроенных обозначений кривых Безье: linear, ease, ease-in, ease-out и ease-in-out. linear это короткая запись для cubic-bezier(0, 0, 1, 1) – прямой линии, которую мы видели раньше. Другие названия – это также сокращения для других cubic-bezier 
+  */
+}
+.move {
+  position: relative;
+  width: 320px;
+  height: 100px;
+  color: #eee;
+  left: 0;
+  cursor: pointer;
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+}
+.move img {
+  width: 100px;
+  height: 100px;
+}
+.move0 {
+  background-image: url(../img/1.jpg);
+  transition: left 5s linear;
+}
+.move1 {
+  background-image: url(../img/2.jpg);
+  transition: left 5s ease;
+}
+.move2 {
+  background-image: url(../img/3.jpg);
+  transition: left 5s ease-in;
+}
+.move3 {
+  background-image: url(../img/4.jpg);
+  transition: left 5s ease-out;
+}
+.move4 {
+  background-image: url(../img/5.jpg);
+  transition: left 5s ease-in-out;
+}
+.img-animate {
+  transition-property: opacity;
+  transition-duration: 2s;
+}
+@keyframes move {
+  from {
+    left: 0px
+  }
+  to {
+    left: 150px;
+  }
+}
+.imgKeyframes {
+  animation: move 3s infinite alternate;
+  position: absolute;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>Пример 1 - Анимация</title>
+</head>
+
+<body>
+
+  <div class="animated">
+    Нажать для анимации
+  </div>
+
+  <div class="move move0">linear<br>cubic-bezier(0, 0, 1,
+    1)
+    <img src="../img/animationLinear.jpg">
+  </div>
+  <div class="move move1">ease<br>cubic-bezier(0.25, 0.1, 0.25,
+    1.0)
+    <img src="../img/animationEase.jpg">
+  </div>
+  <div class="move move2">ease-in<br>cubic-bezier(0.42, 0, 1.0,
+    1.0)
+    <img src="../img/animationEaseIn.jpg">
+  </div>
+  <div class="move move3">ease-out<br>cubic-bezier(0, 0, 0.58, 1.0)
+    <img src="../img/animationEaseOut.jpg">
+  </div>
+  <div class="move move4">ease-in-out<br>cubic-bezier(0.42, 0, 0.58,
+    1.0)
+    <img src="../img/animationEaseInOut.jpg">
+  </div>
+  <button>Анимация</button>
+  <button>Сбросить</button>
+
+  <script>
+    document.querySelector('.animated').onclick = function () {
+      this.style.backgroundColor = 'tomato';
+    }
+
+    document.querySelector('button').onclick = function () {
+      document.querySelector('.move0').style.left = '450px'
+      document.querySelector('.move1').style.left = '450px'
+      document.querySelector('.move2').style.left = '450px'
+      document.querySelector('.move3').style.left = '450px'
+      document.querySelector('.move4').style.left = '450px'
+    }
+
+    document.querySelectorAll('button')[1].onclick = function () {
+      document.querySelector('.move0').style.left = '0px'
+      document.querySelector('.move1').style.left = '0px'
+      document.querySelector('.move2').style.left = '0px'
+      document.querySelector('.move3').style.left = '0px'
+      document.querySelector('.move4').style.left = '0px'
+    }
+  </script>
+</body>
+
+</html>
