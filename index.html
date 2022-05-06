@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Анимация кнопки меню (бургер)</title>
+</head>
+
+<body>
+
+  <style>
+    .content {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 50px;
+      display: flex;
+      justify-content: space-evenly;
+      background-color: #222;
+    }
+    ul {
+      justify-content: center;
+      display: flex;
+      max-width: 960px;
+      margin: 0 auto;
+      list-style: none;
+      font-size: 25px;
+      gap: 20px; 
+      margin-bottom: 20px;
+    }
+    ul > li {
+
+    }
+    ul > li > a {
+      padding-bottom: 2px;
+      color: #333;
+      border-bottom: 1px solid #333;
+      text-decoration: none;
+    }
+  </style>
+
+  <ul>
+    <li><a href="js_animation/js_ex1.html">Пример 1</a></li>
+    <li><a href="js_animation/js_ex2.html">Пример 2</a></li>
+    <li><a href="js_animation/js_ex3.html">Пример 3</a></li>
+    <li><a href="js_animation/js_ex4.html">Пример 4</a></li>
+  </ul>
+
+  <div class="content">
+    <style>
+      /* Общие стили для всех кнопок */
+      .burger {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        width: 96px;
+        height: 96px;
+        font-size: 0;
+        text-indent: -9999px;
+        appearance: none;
+        box-shadow: none;
+        border-radius: none;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .burger:focus {
+        outline: none;
+      }
+
+      .burger span {
+        display: block;
+        position: absolute;
+        top: 44px;
+        left: 18px;
+        right: 18px;
+        height: 8px;
+        background: white;
+      }
+
+      .burger span::before,
+      .burger span::after {
+        position: absolute;
+        display: block;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: #fff;
+        content: "";
+      }
+
+      .burger span::before {
+        top: -20px;
+      }
+
+      .burger span::after {
+        bottom: -20px;
+      }
+    </style>
+
+    <style>
+      /* поворот иконки на 90 */
+      .burger-r90 {
+        background-color: #f57c2c;
+      }
+
+      .burger-r90 span {
+        transition: transform 0.3s;
+      }
+
+      /* состояние active при открытом меню  */
+      .burger-r90.is-active {
+        background-color: #ce490b;
+      }
+
+      .burger-r90.is-active span {
+        transform: rotate(90deg);
+      }
+    </style>
+    <button class="burger burger-r90">
+      <span>toggle menu</span>
+    </button>
+
+    <style>
+      /* Превращаем гамбургер в крестик */
+      .burger-close {
+        background-color: #ff3232;
+      }
+
+      .burger-close span {
+        transition: background 0s 0.3s;
+      }
+
+      .burger-close span::before,
+      .burger-close span::after {
+        transition-duration: 0.3s, 0.3s;
+        transition-delay: 0.3s, 0s;
+      }
+
+      .burger-close span::before {
+        transition-property: top, transform;
+      }
+
+      .burger-close span::after {
+        transition-property: bottom, transform;
+      }
+
+      /* состояние active при открытом меню  */
+      .burger-close.is-active {
+        background-color: #cb0000;
+      }
+
+      .burger-close.is-active span {
+        background: none;
+      }
+
+      .burger-close.is-active span::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+
+      .burger-close.is-active span::after {
+        bottom: 0;
+        transform: rotate(-45deg);
+      }
+
+      .burger-close.is-active span::before,
+      .burger-close.is-active span::after {
+        transition-delay: 0s, 0.3s;
+      }
+    </style>
+    <button class="burger burger-close">
+      <span>toggle menu</span>
+    </button>
+
+    <style>
+      /* CSS стрелка влево */
+      .burger-left {
+        background-color: #4edc32;
+      }
+
+      .burger-left span {
+        transition: transform 0.3s;
+      }
+
+      .burger-left span::before {
+        transform-origin: top right;
+        transition: transform 0.3s, width 0.3s, top 0.3s;
+      }
+
+      .burger-left span::after {
+        transform-origin: bottom right;
+        transition: transform 0.3s, width 0.3s, bottom 0.3s;
+      }
+
+      /* состояние active при открытом меню  */
+      .burger-left.is-active {
+        background-color: #1c9018;
+      }
+
+      .burger-left.is-active span {
+        transform: rotate(180deg);
+      }
+
+      .burger-left.is-active span::before,
+      .burger-left.is-active span::after {
+        width: 50%;
+      }
+
+      .burger-left.is-active span::before {
+        top: 0;
+        transform: translateX(38px) translateY(4px) rotate(45deg);
+      }
+
+      .burger-left.is-active span::after {
+        bottom: 0;
+        transform: translateX(38px) translateY(-4px) rotate(-45deg);
+      }
+    </style>
+    <button class="burger burger-left">
+      <span>toggle menu</span>
+    </button>
+
+    <style>
+      /* CSS стрелка вправо */
+      .burger-right {
+        background-color: #3298dc;
+      }
+
+      .burger-right span {
+        transition: transform 0.3s;
+      }
+
+      .burger-right span::before {
+        transform-origin: top left;
+        transition: transform 0.3s, width 0.3s, top 0.3s;
+      }
+
+      .burger-right span::after {
+        transform-origin: bottom left;
+        transition: transform 0.3s, width 0.3s, bottom 0.3s;
+      }
+
+      /* active state, i.e. menu open */
+      .burger-right.is-active {
+        background-color: #185090;
+      }
+
+      .burger-right.is-active span {
+        transform: rotate(180deg);
+      }
+
+      .burger-right.is-active span::before,
+      .burger-right.is-active span::after {
+        width: 50%;
+      }
+
+      .burger-right.is-active span::before {
+        top: 0;
+        transform: translateX(-8px) translateY(4px) rotate(-45deg);
+      }
+
+      .burger-right.is-active span::after {
+        bottom: 0;
+        transform: translateX(-8px) translateY(-4px) rotate(45deg);
+      }
+    </style>
+    <button class="burger burger-right">
+      <span>toggle menu</span>
+    </button>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+      let toggles = document.querySelectorAll(".burger");
+      for (let i = toggles.length - 1; i >= 0; i--) {
+        let toggle = toggles[i];
+        toggleHandler(toggle);
+      };
+      function toggleHandler(toggle) {
+        toggle.addEventListener("click", function (e) {
+          e.preventDefault();
+          (this.classList.contains("is-active") === true) ? this.classList.remove("is-active") : this.classList.add("is-active");
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>
